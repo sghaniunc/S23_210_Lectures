@@ -1,4 +1,4 @@
-package lec6_7.aInterface;
+package lec6_7;
 // Example of Linear Search
 public class LinearSearch {
     public static void main(String[] args) {
@@ -6,20 +6,17 @@ public class LinearSearch {
         int x = 61;         // The number to search for
         searchArray(a, x);
     }
-    static void searchArray(int[] b, int y){
+    static void searchArray(int[] b, int key){
         int index = -1;     // index of y (if found)
         boolean result = false;
         for (int i = 0; i < b.length; i++) {
-            if (b[i] == y) {
+            if (b[i] == key) {
                 result = true;
                 index = i;
                 break;
             }
         }
-        if (result) {
-            System.out.println("Integer " + y + " exists in the array at index=" + index + ".");
-        } else {
-            System.out.println("Integer " + y + " does not exist in the array.");
-        }
+        if (result) System.out.println("Integer " + key + " exists in the array at index=" + index + ".");
+        else System.out.println("Integer " + key + " does not exist in the array.");
     }
 }

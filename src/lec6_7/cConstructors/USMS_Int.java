@@ -1,16 +1,11 @@
-package lec6_7.bDataEncap;
+package lec6_7.cConstructors;
 /**
- * UsmsDe           = USMS_Int modified to handle data encapsulation
- * UncStudentDe     = UNC student class modified for data encapsulation
- *                      using private fields and setters and getters
- * StudentsListInt  = Interface (unchanged)
- * StudentsListArrDe  = StudentsListArr modified for Data Encapsulation
- * StudentsListLLDe   = StudentsListLL modified for Data Encapsulation
+ * Use of Constructors in UncStudent and usage in enrollStudentC
  */
 
 import java.util.Scanner;
-public class UsmsDe {
-    static StudentsListArrDe sList = new StudentsListArrDe();
+public class USMS_Int{
+    static StudentsListArr sList = new StudentsListArr();
 //    static StudentsListLL sList = new StudentsListLL();
     public static void main(String[] args) {
         while (menu()!=0);
@@ -30,7 +25,8 @@ public class UsmsDe {
         int selectionI = Integer.parseInt(selectionS);
         switch (selectionI) {
             case 1: {
-                enrollStudent();
+//                enrollStudent();
+                enrollStudentC();
                 break;}
             case 2: {searchStudent();                       break;}
             case 3: {printAllStudents();                    break;}
@@ -43,11 +39,11 @@ public class UsmsDe {
         return(1);
     }
 
-    static UncStudentDe enrollStudent(){
+    static UncStudent enrollStudent(){
         Scanner s=new Scanner(System.in);
         System.out.println("Enrolling a new student:");
 
-        UncStudentDe st = new UncStudentDe();
+        UncStudent st = new UncStudent();
         System.out.println("Enter first name:");
         st.setFName(s.next());
         System.out.println("Enter last name of "+st.getFName());
@@ -56,6 +52,21 @@ public class UsmsDe {
         while (!st.setId(s.nextInt())){
             System.out.println("Please renter id:");
         }
+        sList.add(st);
+        System.out.println("Student: "+st.getFName()+" "+st.getLName()+" with id = "+ st.getId()+ " enrolled.");
+        return(st);
+    }
+
+    static UncStudent enrollStudentC(){     // uses Constructor
+        Scanner s=new Scanner(System.in);
+        System.out.println("Enrolling a new student:");
+        System.out.println("Enter first name:");
+        String fName = s.next();
+        System.out.println("Enter last name of "+fName);
+        String lName = s.next();
+        System.out.println("Enter student id (max 9 digits):");
+        int id = s.nextInt();
+        UncStudent st = new UncStudent(fName, lName, id);   // use of Constructor
         sList.add(st);
         System.out.println("Student: "+st.getFName()+" "+st.getLName()+" with id = "+ st.getId()+ " enrolled.");
         return(st);

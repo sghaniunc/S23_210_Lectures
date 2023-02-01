@@ -10,8 +10,9 @@ package lec6_7.aInterface;
 
 import java.util.Scanner;
 public class USMS_Int{
+    static StudentsListInt sList = new Test();
     // Use one of the following statements depending on the data structure to be used:
-    static StudentsListInt sList = new StudentsListArr();
+//    static StudentsListInt sList = new StudentsListArr();
     // OR:
     // static StudentsListLL sList = new StudentsListLL();
 
